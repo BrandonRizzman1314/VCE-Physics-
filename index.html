@@ -4,10 +4,139 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>VCE Study Hub</title>
+  <title>VCE Study Hub | Physics</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      max-width: 950px;
+      margin: 0 auto;
+      padding: 24px;
+      background: #f4f6fb;
+      color: #202b3c;
+      line-height: 1.6;
+    }
+    header, .section, .quiz {
+      background: white;
+      padding: 24px;
+      margin: 20px 0;
+      border-radius: 14px;
+      box-shadow: 0 2px 10px #0000000c;
+    }
+    h1, h2 { color: #244e88; }
+    h3 { margin-top: 28px; }
+    .key, .warn {
+      padding: 14px;
+      margin: 16px 0;
+      border-radius: 8px;
+      background: #edf3ff;
+    }
+    .warn { background: #fff4dc; }
+    label { display: block; margin: 14px 0; }
+    input[type="range"] { display: block; width: 100%; }
+    button {
+      padding: 10px 14px;
+      margin: 5px;
+      border: 0;
+      border-radius: 7px;
+      background: #244e88;
+      color: white;
+      cursor: pointer;
+    }
+    button.on { background: #c77b22; }
+    .eqs > div, .out > div {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 10px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .hit { background: #e3edff; }
+    .mute { color: #667085; font-size: .9em; }
+    svg { width: 100%; height: auto; }
+    .question { padding: 15px 0; border-bottom: 1px solid #ddd; }
+    .feedback { font-weight: bold; }
+  </style>
 </head>
 <body>
-  <h1>VCE Study Hub</h1>
-  <p>My Physics and Legal Studies website is working!</p>
+  <header>
+    <h1>VCE Study Hub</h1>
+    <p>Physics · Unit 1A: Kinematics recap</p>
+    <p>Learn the concepts, experiment with motion and test your understanding.</p>
+  </header>
+
+  <main id="topic">
+    <p>Loading Physics topic...</p>
+  </main>
+
+  <script src="js/physics-topic-1a.js"></script>
+  <script>
+    const topic = window.TOPICS && window.TOPICS["1A"];
+    const main = document.getElementById("topic");
+
+    if (!topic) {
+      main.innerHTML =
+        "<p>Topic not found. Check that the JavaScript file loaded correctly.</p>";
+    } else {
+      main.innerHTML = `
+        <h2>${topic.title}</h2>
+        ${topic.sections.map(section => `
+          <article class="section">
+            <h3>${section.title}</h3>
+            ${section.html}
+          </article>
+        `).join("")}
+        <section class="quiz">
+          <h2>Knowledge check</h2>
+          <div id="questions"></div>
+          <button id="check">Check answers</button>
+          <p id="score" aria-live="polite"></p>
+        </section>
+      `;
+
+      topic.sections.forEach(section => {
+        section.init?.forEach(initialise => {
+          if (typeof initialise === "function") {
+            initialise(main.querySelector(".section:nth-of-type(" +
+              (topic.sections.indexOf(section) + 1) + ")"));
+          }
+        });
+      });
+
+      const questions = document.getElementById("questions");
+      questions.innerHTML = topic.questions.map((q, i) => `
+        <div class="question">
+          <p><b>${i + 1}. ${q.q}</b></p>
+          ${q.o.map((option, j) => `
+            <label>
+              <input type="radio" name="q${i}" value="${j}">
+              <span>${option}</span>
+            </label>
+          `).join("")}
+          <p class="feedback" id="feedback${i}"></p>
+        </div>
+      `).join("");
+
+      document.getElementById("check").onclick = () => {
+        let score = 0;
+        topic.questions.forEach((q, i) => {
+          const selected = document.querySelector(
+            `input[name="q${i}"]:checked`
+          );
+          const feedback = document.getElementById("feedback" + i);
+
+          if (selected && Number(selected.value) === q.a) {
+            score++;
+            feedback.textContent = "Correct! " + q.s.replace(/<[^>]*>/g, "");
+            feedback.style.color = "green";
+          } else {
+            feedback.textContent = "Review: " + q.s.replace(/<[^>]*>/g, "");
+            feedback.style.color = "#a33";
+          }
+        });
+        document.getElementById("score").textContent =
+          `Your score: ${score} / ${topic.questions.length}`;
+      };
+    }
+  </script>
 </body>
 </html>
