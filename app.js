@@ -4,20 +4,22 @@
   const nav = document.getElementById('nav'), main = document.getElementById('main');
   let S = {}; try { S = JSON.parse(localStorage.getItem('vcep') || '{}'); } catch (e) {}
   S.seen = S.seen || {}; S.ans = S.ans || {};
+  const slug = id => T[id] ? T[id].title.toLowerCase().replace(/[^a-z0-9]+/g, '-') : id;
   const save = () => { try { localStorage.setItem('vcep', JSON.stringify(S)); } catch (e) {} };
 
   function route() {
-    const [id, sec] = (location.hash.slice(1) || 'home').split('/');
-    T[id] ? topic(id, sec) : home();
+    const [h, sec] = (location.hash.slice(1) || 'home').split('/');
+    const id = Object.keys(T).find(k => slug(k) === h || k === h);
+    id ? topic(id, sec) : home();
     window.scrollTo(0, 0);
   }
 
   function home() {
     document.title = 'VCE Physics 3&4'; nav.innerHTML = '';
-    main.innerHTML = '<h1>VCE Physics Units 3 &amp; 4</h1><p class="mute">Unit 3 · Area of Study 1 · Chapter 1: Force and motion</p><div class="cards">' +
+    main.innerHTML = '<h1>VCE Physics Units 3 &amp; 4</h1><p class="mute">Unit 3 · Area of Study 1: How do physicists explain motion in two dimensions?</p><div class="cards">' +
       ALL.map(([id, n]) => T[id]
-        ? `<a class="live" href="#${id}"><b>${id}</b> ${n}<br><small>${pct(id)}% complete</small></a>`
-        : `<a class="soon"><b>${id}</b> ${n}<br><small>Coming soon</small></a>`).join('') + '</div>';
+        ? `<a class="live" href="#${slug(id)}"><b>${n}</b><br><small>${pct(id)}% complete</small></a>`
+        : `<a class="soon"><b>${n}</b><br><small>Coming soon</small></a>`).join('') + '</div>';
   }
 
   const items = id => [...T[id].sections, { id: 'quiz', title: 'Progress questions' }];
@@ -29,15 +31,15 @@
     const t = T[id], it = items(id);
     let i = it.findIndex(x => x.id === sec); if (i < 0) i = 0;
     const cur = it[i]; S.seen[id + '/' + cur.id] = cur.id === 'quiz' ? S.seen[id + '/quiz'] : 1; save();
-    document.title = `${id} ${t.title} · VCE Physics`;
+    document.title = `${t.title} · VCE Physics`;
     main.innerHTML = `<h2>${cur.title}</h2><div id="body"></div><div class="pager">` +
-      (i > 0 ? `<a href="#${id}/${it[i - 1].id}">← ${it[i - 1].title}</a>` : '<a class="off">.</a>') +
-      (i < it.length - 1 ? `<a href="#${id}/${it[i + 1].id}">${it[i + 1].title} →</a>` : '<a href="#home">Finish ✓</a>') + '</div>';
+      (i > 0 ? `<a href="#${slug(id)}/${it[i - 1].id}">← ${it[i - 1].title}</a>` : '<a class="off">.</a>') +
+      (i < it.length - 1 ? `<a href="#${slug(id)}/${it[i + 1].id}">${it[i + 1].title} →</a>` : '<a href="#home">Finish ✓</a>') + '</div>';
     const body = document.getElementById('body');
     if (cur.id === 'quiz') quiz(id, t, body);
     else { body.innerHTML = cur.html; (cur.init || []).forEach(f => f(body)); steps(body); }
-    nav.innerHTML = `<a class="back" href="#home">← All topics</a><h3>${id} ${t.title}</h3><div class="bar"><i style="width:${pct(id)}%"></i></div>` +
-      it.map((x, n) => `<a href="#${id}/${x.id}" class="${n === i ? 'on' : ''}"><span class="tick">${S.seen[id + '/' + x.id] ? '✓' : ''}</span>${x.title}</a>`).join('');
+    nav.innerHTML = `<a class="back" href="#home">← All topics</a><h3>${t.title}</h3><div class="bar"><i style="width:${pct(id)}%"></i></div>` +
+      it.map((x, n) => `<a href="#${slug(id)}/${x.id}" class="${n === i ? 'on' : ''}"><span class="tick">${S.seen[id + '/' + x.id] ? '✓' : ''}</span>${x.title}</a>`).join('');
   }
 
   function steps(root) {
