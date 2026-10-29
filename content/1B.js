@@ -70,7 +70,7 @@
   }
 
   window.TOPICS['1B'] = {
-    title: 'Forces recap',
+    title: 'Newton’s three laws of motion', kk: ['Investigate and apply theoretically and practically Newton’s three laws of motion in situations where two or more coplanar forces act along a straight line and in two dimensions.'],
     sections: [
       { id: 'vectors', title: 'Force vectors', init: [resolver], html: `
         <p>A <b>force</b> is a push or a pull. It is a vector, so it has a magnitude and a direction. The SI unit is the newton (N), where 1 N = 1 kg m s<sup>−2</sup>.</p>
