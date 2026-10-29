@@ -30,7 +30,7 @@
     w.oninput = draw; w.onclick = e => { if (e.target.dataset.p) { pos = e.target.dataset.p; draw(); } }; draw();
   }
 
-  window.TOPICS['1G'] = { title: 'Vertical circular motion', sections: [
+  window.TOPICS['1G'] = { title: 'Circular motion in a vertical plane', kk: ['Investigate and apply theoretically Newton’s second law to circular motion in a vertical plane (forces at the highest and lowest positions only).'], sections: [
     { id: 'idea', title: 'Forces in a vertical circle', init: [loop], html: `
       <p>In a horizontal circle, gravity does not point toward the centre, so it does not help. In a <b>vertical</b> circle the weight acts along the line to the centre at the top and the bottom, so it either helps or works against the other force. That is why the forces differ at different points.</p>
       <div class="key">At every point, the net force toward the centre equals <b>mv² ÷ r</b>. At the top and the bottom, only two forces act on the object: its <b>weight</b> and the <b>normal force</b> (or tension, if it hangs on a rope).</div>
