@@ -55,7 +55,7 @@
     return { out: [['Speed v = 2πr/T', f(v, 2) + ' ' + U], ['Acceleration a = 4π²r/T²', f(a, 2) + ' ' + A], ['Net force F = ma', f(V.m * a, 2) + ' N']] };
   });
 
-  window.TOPICS['1E'] = { title: 'Basic circular motion', sections: [
+  window.TOPICS['1E'] = { title: 'Uniform circular motion in a horizontal plane', kk: ['Investigate and analyse theoretically and practically the uniform circular motion of an object moving in a horizontal plane: F<sub>net</sub> = mv²/r, including a vehicle moving around a circular road and an object on the end of a string.'], sections: [
     { id: 'idea', title: 'Why circular motion needs a force', init: [orbit], html: `
       <p>In <b>uniform circular motion</b> an object moves in a circle at constant <i>speed</i>. But velocity is a vector, and its direction keeps changing. A changing velocity means the object is <b>accelerating</b>, even though its speed is steady. So there must be a net force.</p>
       <div class="o1 w"></div>
@@ -93,7 +93,7 @@
       <tr><td>Car on a flat, circular bend</td><td>Friction between the tyres and the road</td></tr>
       <tr><td>Moon or satellite in orbit</td><td>Gravitational force</td></tr>
       <tr><td>Person pinned in a spinning drum</td><td>Normal force from the wall</td></tr>
-      <tr><td>Car on a banked bend</td><td>Horizontal component of the normal force (see Banked circular motion)</td></tr></table>
+      <tr><td>Car on a banked bend</td><td>Horizontal component of the normal force (see Vehicle moving around a banked track)</td></tr></table>
       <div class="warn"><b>Common mistakes</b><br>1. Drawing “centripetal force” as an extra arrow on a free-body diagram. It is already one of the forces you have drawn.<br>2. Believing a “centrifugal force” pushes objects outward. The feeling of being thrown outward is your body trying to keep going in a straight line.<br>3. Thinking the speed changes. In <i>uniform</i> circular motion only the direction changes.<br>4. Using v instead of v² in F = mv²/r.</div>` },
     { id: 'examples', title: 'Worked examples', html: `<p>Method: (1) find the speed, using 2πr ÷ T if you are given the time for a lap; (2) identify the force toward the centre; (3) set it equal to mv² ÷ r; (4) solve.</p>` +
       ex('car on a roundabout', ['<b>Situation:</b> a 900 kg car drives around a roundabout of radius 25 m at 10 ' + U + '. What friction force is needed?', '<b>Friction provides the net force toward the centre.</b>', '<b>Substitute:</b> F = mv² ÷ r = (900)(10)² ÷ 25 = 90 000 ÷ 25', '<b>Answer:</b> <b>3600 N</b> toward the centre.']) +
