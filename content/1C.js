@@ -9,7 +9,7 @@
     const n = V.m * 9.8 * Math.sin(V.t * Math.PI / 180) - V.F;
     return { out: [['Net force down slope', f(n) + ' N'], ['Acceleration down slope', f(n / V.m, 2) + ' ' + A], ['Result', n > 0 ? 'speeds up' : n < 0 ? 'slows down' : 'constant velocity']] };
   });
-  window.TOPICS['1C'] = { title: 'Inclined planes', sections: [
+  window.TOPICS['1C'] = { title: 'Coplanar forces in two dimensions: inclined planes', kk: ['Newton’s three laws applied where two or more coplanar forces act <b>in two dimensions</b>.'], sections: [
     { id: 'components', title: 'Forces on a slope', init: [L1], html: `
       <p>On a slope it is easiest to choose axes <b>parallel</b> and <b>perpendicular</b> to the surface, then resolve the weight (which still points straight down) into those directions.</p>
       <div class="key"><b>Parallel to slope:</b> mg sin θ (pulls the object down the slope)<br><b>Perpendicular to slope:</b> mg cos θ (pushes into the surface)<br>The object does not accelerate into or out of the surface, so <b>N = mg cos θ</b>.</div>
