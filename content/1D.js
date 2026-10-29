@@ -30,7 +30,7 @@
     return { svg, out: [['Acceleration a = m₂g ÷ (m₁ + m₂)', f(a, 2) + ' ' + A], ['Tension T = m₁a', f(T, 2) + ' N'], ['Weight of hanging mass m₂g', f(W, 2) + ' N'], ['Tension compared with m₂g', T < W ? 'smaller, because m₂ accelerates down' : 'equal']] };
   }, '0 0 600 330');
 
-  window.TOPICS['1D'] = { title: 'Connected bodies', sections: [
+  window.TOPICS['1D'] = { title: 'Coplanar forces along a straight line: connected bodies', kk: ['Newton’s three laws applied where two or more coplanar forces act <b>along a straight line</b>.'], sections: [
     { id: 'idea', title: 'Connected objects', init: [D1], html: `
       <p>When objects are joined by a rope, they move together as one connected system. We assume the rope is <b>light</b> (it has no mass) and <b>inextensible</b> (it does not stretch). Two consequences follow:</p>
       <div class="key"><b>1. Same acceleration:</b> the objects stay the same distance apart, so they have the same acceleration (in size).<br><b>2. Same tension:</b> the tension T has the same size everywhere along a light rope.</div>
