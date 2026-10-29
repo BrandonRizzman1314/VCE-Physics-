@@ -27,7 +27,7 @@
     return { out: [['v² ÷ (rg)', f(q, 3)], ['Banking angle θ = tan⁻¹(v²/rg)', f(Math.atan(q) * 180 / Math.PI) + '°'], ['Speed in km/h', f(V.v * 3.6, 0)]] };
   });
 
-  window.TOPICS['1F'] = { title: 'Banked circular motion', sections: [
+  window.TOPICS['1F'] = { title: 'Vehicle moving around a banked track', kk: ['Uniform circular motion in a horizontal plane: F<sub>net</sub> = mv²/r, including a vehicle moving around a banked track.'], sections: [
     { id: 'idea', title: 'How banking works', init: [D], html: `
       <p>On a flat road, <b>friction</b> alone turns a car around a bend. On wet or icy roads it may not be enough. Engineers <b>bank</b> the road, tilting it so the outside edge is higher. The road’s <b>normal force</b> is perpendicular to the surface, so it now tilts toward the centre of the bend and helps turn the car.</p>
       <div class="d1 w"></div>
