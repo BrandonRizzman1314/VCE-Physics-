@@ -52,3 +52,4 @@ main h3{margin-top:1.6rem;padding-bottom:.2rem;border-bottom:2px solid var(--acc
 .fcard{border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:10px;padding:.7rem 1rem;margin:1rem 0}
 .fcard h4{margin:0}.fcard .where{margin:.2rem 0 0;font-size:.95rem}.fcard .where b{color:var(--acc)}
 .legend{width:100%;border-collapse:collapse;margin:.8rem 0}.legend td,.legend th{border-bottom:1px solid var(--line);padding:.35rem .6rem;text-align:left}.legend td:first-child{font-family:"Cambria Math",Georgia,serif;font-style:italic;font-size:1.1rem;white-space:nowrap}
+.legend.plain td:first-child{font-style:normal;font-family:inherit;font-size:1rem;white-space:normal}
