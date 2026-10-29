@@ -42,3 +42,13 @@ input.num{font:inherit;padding:.4rem .6rem;width:9rem;border:1px solid var(--lin
 .tag{font-size:.75rem;background:var(--accbg);color:var(--acc);padding:.1rem .5rem;border-radius:99px;margin-left:.3rem}
 main h3{margin-top:1.6rem;padding-bottom:.2rem;border-bottom:2px solid var(--accbg)}
 .key{font-size:1.05rem}
+/* Formula display */
+.eq{text-align:center;font-size:1.4rem;margin:.6rem 0;font-family:"Cambria Math",Cambria,Georgia,serif;font-style:italic}
+.eq .fn{font-style:normal}
+.frac{display:inline-flex;flex-direction:column;vertical-align:middle;text-align:center;margin:0 .3em}
+.frac>span:first-child{border-bottom:1.5px solid currentColor;padding:0 .35em .08em}
+.frac>span:last-child{padding:.08em .35em 0}
+.sq{white-space:nowrap}.sq>span{border-top:1.5px solid currentColor;padding:0 .2em;margin-left:.05em}
+.fcard{border:1px solid var(--line);border-left:4px solid var(--acc);border-radius:10px;padding:.7rem 1rem;margin:1rem 0}
+.fcard h4{margin:0}.fcard .where{margin:.2rem 0 0;font-size:.95rem}.fcard .where b{color:var(--acc)}
+.legend{width:100%;border-collapse:collapse;margin:.8rem 0}.legend td,.legend th{border-bottom:1px solid var(--line);padding:.35rem .6rem;text-align:left}.legend td:first-child{font-family:"Cambria Math",Georgia,serif;font-style:italic;font-size:1.1rem;white-space:nowrap}
