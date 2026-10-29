@@ -7,7 +7,7 @@
   const L2 = lab('l2', 'Impulse: a ball hits a wall (towards the wall is positive)', [['m', 'Mass (kg)', .1, 2, .15, .05], ['i', 'Velocity before (m/s)', 1, 40, 20], ['o', 'Velocity after (m/s)', -30, 30, -15], ['t', 'Contact time (s)', .005, .1, .02, .005]], V => {
     const J = V.m * (V.o - V.i); return { out: [['Change in momentum Δp', f(J, 2) + ' N s'], ['Average force F = Δp/Δt', f(J / V.t, 0) + ' N']] };
   });
-  window.TOPICS['1I'] = { title: 'Momentum and impulse', sections: [
+  window.TOPICS['1I'] = { title: 'Conservation of momentum and impulse in collisions', kk: ['Investigate and apply theoretically and practically the laws of energy and momentum conservation in isolated systems in one dimension.','Investigate and analyse theoretically and practically impulse in an isolated system for collisions between objects moving in a straight line: FΔt = mΔv.'], sections: [
     { id: 'momentum', title: 'Momentum and its conservation', init: [L1], html: `
       <div class="key"><b>Momentum: p = mv</b> (vector, unit kg m s<sup>−1</sup>).<br><b>Conservation:</b> in a closed system with no external net force, total momentum before = total momentum after.</div>
       <p>For a collision in one dimension: <b>m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂</b>. Give each velocity a sign.</p>
