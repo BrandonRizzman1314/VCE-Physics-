@@ -67,7 +67,7 @@
   }
 
   window.TOPICS['1A'] = {
-    title: 'Kinematics recap',
+    title: 'Describing motion (prerequisite skills)', kk: ['Not listed as its own dot point in the study design, but it underpins all of Unit 3 Area of Study 1: displacement, velocity, acceleration and the constant acceleration equations in one dimension.'],
     sections: [
       { id: 'vectors', title: 'Vectors and scalars', init: [walk(false)], html: `
         <p>Physics quantities come in two types.</p>
