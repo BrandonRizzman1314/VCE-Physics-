@@ -1,6 +1,7 @@
 (function () {
   const T = window.TOPICS || {};
   const ALL = [['1A','Kinematics recap'],['1B','Forces recap'],['1C','Inclined planes'],['1D','Connected bodies'],['1E','Basic circular motion'],['1F','Banked circular motion'],['1G','Vertical circular motion'],['1H','Projectile motion'],['1I','Momentum and impulse']];
+  const GROUPS = [['Newton’s laws of motion', ['1A', '1B', '1C', '1D', '1E', '1F', 'sat', '1G', '1H']], ['Relationships between force, energy and mass', ['1I', 'work', 'energy']]];
   const nav = document.getElementById('nav'), main = document.getElementById('main');
   let S = {}; try { S = JSON.parse(localStorage.getItem('vcep') || '{}'); } catch (e) {}
   S.seen = S.seen || {}; S.ans = S.ans || {};
@@ -16,10 +17,8 @@
 
   function home() {
     document.title = 'VCE Physics 3&4'; nav.innerHTML = '';
-    main.innerHTML = '<h1>VCE Physics Units 3 &amp; 4</h1><p class="mute">Unit 3 · Area of Study 1: How do physicists explain motion in two dimensions?</p><div class="cards">' +
-      ALL.map(([id, n]) => T[id]
-        ? `<a class="live" href="#${slug(id)}"><b>${n}</b><br><small>${pct(id)}% complete</small></a>`
-        : `<a class="soon"><b>${n}</b><br><small>Coming soon</small></a>`).join('') + '</div>';
+    main.innerHTML = '<h1>VCE Physics Units 3 &amp; 4</h1><p class="mute">Unit 3 · Area of Study 1: How do physicists explain motion in two dimensions?<br>Topics follow the key knowledge in the VCAA study design.</p>' +
+      GROUPS.map(([g, ids]) => `<h3>${g}</h3><div class="cards">` + ids.filter(id => T[id]).map(id => `<a class="live" href="#${slug(id)}"><b>${T[id].title}</b><br><small>${pct(id)}% complete</small></a>`).join('') + '</div>').join('');
   }
 
   const items = id => [...T[id].sections, { id: 'quiz', title: 'Progress questions' }];
@@ -37,7 +36,7 @@
       (i < it.length - 1 ? `<a href="#${slug(id)}/${it[i + 1].id}">${it[i + 1].title} →</a>` : '<a href="#home">Finish ✓</a>') + '</div>';
     const body = document.getElementById('body');
     if (cur.id === 'quiz') quiz(id, t, body);
-    else { body.innerHTML = cur.html; (cur.init || []).forEach(f => f(body)); steps(body); }
+    else { body.innerHTML = (i === 0 && t.kk ? '<div class="sd"><b>Study design key knowledge</b><ul>' + t.kk.map(k => `<li>${k}</li>`).join('') + '</ul></div>' : '') + cur.html; (cur.init || []).forEach(f => f(body)); steps(body); }
     nav.innerHTML = `<a class="back" href="#home">← All topics</a><h3>${t.title}</h3><div class="bar"><i style="width:${pct(id)}%"></i></div>` +
       it.map((x, n) => `<a href="#${slug(id)}/${x.id}" class="${n === i ? 'on' : ''}"><span class="tick">${S.seen[id + '/' + x.id] ? '✓' : ''}</span>${x.title}</a>`).join('');
   }
