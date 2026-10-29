@@ -93,7 +93,7 @@
       <tr><td>Car on a flat, circular bend</td><td>Friction between the tyres and the road</td></tr>
       <tr><td>Moon or satellite in orbit</td><td>Gravitational force</td></tr>
       <tr><td>Person pinned in a spinning drum</td><td>Normal force from the wall</td></tr>
-      <tr><td>Car on a banked bend</td><td>Horizontal component of the normal force (see 1F)</td></tr></table>
+      <tr><td>Car on a banked bend</td><td>Horizontal component of the normal force (see Banked circular motion)</td></tr></table>
       <div class="warn"><b>Common mistakes</b><br>1. Drawing “centripetal force” as an extra arrow on a free-body diagram. It is already one of the forces you have drawn.<br>2. Believing a “centrifugal force” pushes objects outward. The feeling of being thrown outward is your body trying to keep going in a straight line.<br>3. Thinking the speed changes. In <i>uniform</i> circular motion only the direction changes.<br>4. Using v instead of v² in F = mv²/r.</div>` },
     { id: 'examples', title: 'Worked examples', html: `<p>Method: (1) find the speed, using 2πr ÷ T if you are given the time for a lap; (2) identify the force toward the centre; (3) set it equal to mv² ÷ r; (4) solve.</p>` +
       ex('car on a roundabout', ['<b>Situation:</b> a 900 kg car drives around a roundabout of radius 25 m at 10 ' + U + '. What friction force is needed?', '<b>Friction provides the net force toward the centre.</b>', '<b>Substitute:</b> F = mv² ÷ r = (900)(10)² ÷ 25 = 90 000 ÷ 25', '<b>Answer:</b> <b>3600 N</b> toward the centre.']) +
