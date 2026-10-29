@@ -9,7 +9,7 @@
   window.TOPICS['1H'] = { title: 'Projectile motion', sections: [
     { id: 'idea', title: 'Two independent motions', init: [L1], html: `
       <p>With air resistance ignored, a projectile has <b>two independent motions</b>:</p>
-      <div class="key"><b>Horizontal:</b> no force, so constant velocity. &nbsp; <b>s<sub>x</sub> = v<sub>x</sub> t</b><br><b>Vertical:</b> constant acceleration g downward. Use the equations from 1A with a = −9.8 (up positive).</div>
+      <div class="key"><b>Horizontal:</b> no force, so constant velocity. &nbsp; <b>s<sub>x</sub> = v<sub>x</sub> t</b><br><b>Vertical:</b> constant acceleration g downward. Use the constant acceleration equations from Kinematics recap with a = −9.8 (up positive).</div>
       <p>For a launch at speed v and angle θ above the horizontal: <b>v<sub>x</sub> = v cos θ</b> and <b>v<sub>y</sub> = v sin θ</b>. Time is the link between the two directions.</p>
       <div class="l1 w"></div>
       <p>Try 45° for the longest range, and notice that angles such as 30° and 60° give the same range.</p>` },
